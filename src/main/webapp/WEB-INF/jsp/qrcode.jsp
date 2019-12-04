@@ -37,7 +37,7 @@
 		</div>
 		<div>
 			<span>UUID:</span> <input type="text" id="uuid" name=uuid
-				value="123456" />
+				value="123456" style="display: block" />
 		</div>
 		<div>
 			<input type="button" id="appLogin" name=appLogin value="APP登陆" />
@@ -47,8 +47,8 @@
 	<div>
 		<span>模拟WEB登陆</span>
 		<div>
-			<span>UUID:</span> <input type="text" id="webUUID" name=webUUID
-				value="123456" />
+			<input type="text" id="webUUID" name=webUUID value="123456"
+				style="display: none" />
 		</div>
 		<div>
 			<input type="button" id="webLogin" name=webLogin value="WEB登陆" />
@@ -59,8 +59,12 @@
 		function qrCodeRefresh() {
 			$.ajaxSettings.async = false;
 			$.getJSON("qrcode.do", function(data, status, xhr) {
+				console.log(data.uuid);
 				console.log(data.type);
 				console.log(data.base64);
+
+				$('#uuid').val(data.uuid)
+				$('#webUUID').val(data.uuid)
 				$('#qrcodeID').attr('src', data.type + data.base64);
 			});
 		}
@@ -88,7 +92,6 @@
 				console.log(data.isLogin);
 				if (data.isLogin == 'true') {
 					alert("APP登陆成功!");
-					window.location.href = 'main.do';
 					return true;
 				} else {
 					alert("APP登陆失败!");

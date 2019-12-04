@@ -77,6 +77,7 @@ public class QRCodeController {
 
 		Map<String, Object> map = new HashMap<String, Object>();
 
+		map.put("uuid", UUID);
 		map.put("type", type);
 		map.put("base64", base64);
 
@@ -110,6 +111,12 @@ public class QRCodeController {
 			throws Exception {
 
 		Map<String, Object> map = new HashMap<String, Object>();
+
+		if (session.getAttribute("uuid") == null) {
+			map.put("isLogin", "false");
+			return map;
+		}
+
 		int uuid = (int) session.getAttribute("uuid");
 
 		if (uuid == webUUID) {
