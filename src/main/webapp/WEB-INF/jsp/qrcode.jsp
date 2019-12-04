@@ -37,7 +37,7 @@
 		</div>
 		<div>
 			<span>UUID:</span> <input type="text" id="uuid" name=uuid
-				value="123456" style="display: block" />
+				value="123456" style="visibility: visible" />
 		</div>
 		<div>
 			<input type="button" id="appLogin" name=appLogin value="APP登陆" />
