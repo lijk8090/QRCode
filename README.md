@@ -1,2 +1,2 @@
 # QRCode
-Java QRCode with ZXing -->> 二维码
+SpringBoot QRCode with ZXing -->> 二维码
